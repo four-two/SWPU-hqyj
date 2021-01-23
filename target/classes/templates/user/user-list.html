@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/lib/layui/css/layui.css">
+    <link href="images/th.jpg" rel="icon" type="image/x-ico">
+    <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/lib/layui/layui.js" charset="utf-8"></script>
+</head>
+<body>
+
+<table  class="layui-table">
+    <thead>
+    <th>编号</th>
+    <th>用户名</th>
+    <th>密码</th>
+    <th>邮箱</th>
+    </thead>
+    <tbody>
+    <tr th:each="i:${info.list}">
+        <td th:text="${i.userId}"></td>
+        <td th:text="${i.userName}"></td>
+        <td th:text="${i.userPwd}"></td>
+        <td th:text="${i.userEmail}"></td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a class="layui-btn layui-btn-normal" th:href="@{/userInfo/list(page=${info.pre})}" >上一页</a>
+    <a class="layui-btn layui-btn-normal" th:href="@{/userInfo/list(page=${info.next})}" >下一页</a>
+    一共有<span th:text="${info.total}"></span>条数据
+    一共有<span th:text="${info.totalPage}"></span>页
+    当前第<span th:text="${info.cur}"></span>页
+</div>
+</body>
+</html>
